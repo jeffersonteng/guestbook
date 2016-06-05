@@ -8,6 +8,8 @@ const MongoClient = require('mongodb').MongoClient;
 // property of the request object. Note: This must be before CRUD handlers.
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.set('view engine', 'ejs');
+
 // Start server on successful db connection
 var url = 'mongodb://' + process.env.MLAB_DB_USER + ':' + process.env.MLAB_DB_PASS + '@ds023603.mlab.com:23603/jteng-todo-app';
 
@@ -26,10 +28,10 @@ MongoClient.connect(url, (err, database) => {
 // API Handlers
 
 app.get('/', (req, res) => {
-  db.collection('quotes').find().toArray( (err, results) => {
-    console.log(results);
+  db.collection('quotes').find().toArray( (err, result) => {
+    console.log(result);
+    res.render('index.ejs', {quotes: result});
   });
-  res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/db', (req, res) => {
