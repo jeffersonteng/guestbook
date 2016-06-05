@@ -26,6 +26,9 @@ MongoClient.connect(url, (err, database) => {
 // API Handlers
 
 app.get('/', (req, res) => {
+  db.collection('quotes').find().toArray( (err, results) => {
+    console.log(results);
+  });
   res.sendFile(__dirname + '/index.html');
 });
 
