@@ -10,7 +10,7 @@
         <li class="quotes">
           <span><%= quotes[i].name %></span>
           <span><%= quotes[i].quote %></span>
-          <button id="btn<%=i%>" class="edit">Edit</button>
+          <button id="<%=quotes[i]._id%>" class="edit">Edit</button>
         </li>
       <% } %>
     </ul>

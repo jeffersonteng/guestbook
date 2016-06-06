@@ -1,6 +1,6 @@
 $('.edit').on("click", function() {
   var $editButton = $(this);
-  var id = $editButton.attr("id").slice(-1);
+  var id = $editButton.attr("id");
 
   var $item = $(this).parent();
 
