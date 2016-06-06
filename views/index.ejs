@@ -10,9 +10,12 @@
         <li class="quotes">
           <span><%= quotes[i].name %></span>
           <span><%= quotes[i].quote %></span>
+          <button id="btn<%=i%>" class="edit">Edit</button>
         </li>
       <% } %>
     </ul>
+
+    <button id="update">Last quote</button>
 
     <form action="/quotes" method="POST">
       <input type="text" placeholder="name" name="name">
@@ -22,5 +25,8 @@
       <button type="submit">Submit</button>
     </form>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

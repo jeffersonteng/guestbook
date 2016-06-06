@@ -7,8 +7,11 @@ const MongoClient = require('mongodb').MongoClient;
 // Extract data from form element and adds them onto the body
 // property of the request object. Note: This must be before CRUD handlers.
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
 
 // Start server on successful db connection
 var url = 'mongodb://' + process.env.MLAB_DB_USER + ':' + process.env.MLAB_DB_PASS + '@ds023603.mlab.com:23603/jteng-todo-app';
@@ -37,6 +40,10 @@ app.get('/', (req, res) => {
 app.get('/db', (req, res) => {
   console.log(process.env);
   res.send('Nice try buddy');
+});
+
+app.put('/quotes', (req, res) => {
+  console.log("id: " + req.body.id + " name: " + req.body.name + " quote: " + req.body.quote);
 });
 
 app.post('/quotes', (req, res) => {
